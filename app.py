@@ -104,6 +104,7 @@ def login():
 def landing():
     return render_template('landing.html')
 
+
 @app.route('/calculate', methods=['GET', 'POST'])
 @login_required
 def calculate_footprint():
@@ -132,7 +133,7 @@ def calculate_footprint():
         db.session.add(new_activity)
         db.session.commit()
 
-        return render_template('result.html', footprint=total_footprint, breakdown=footprint_breakdown, eco_tip=eco_tip)
+        return render_template('result.html', footprint=total_footprint, breakdown=footprint_breakdown, eco_tip=eco_tip, comparison=comparison)
     
     return render_template('index.html', activities=EMISSION_FACTORS.keys())
 
